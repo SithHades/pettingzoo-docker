@@ -10,6 +10,18 @@ agent_urls = {
     "agent_1": "http://localhost:5001/select_action",
 }
 
+
+def get_action(agent, action_space):
+    while True:
+        try:
+            resp = requests.post(agent_urls[agent], json.dumps(action_space))
+            resp.raise_for_status
+            return resp.json()
+        except requests.exceptions.RequestException:
+            print(f"Couldn't connect to agent {agent}, retrying...")
+            continue
+
+
 for i in range(10):
     observations = env.reset()
     print(f"game: {i}")
@@ -18,8 +30,7 @@ for i in range(10):
         actions = {}
         for agent in env.agents:
             action_space = env.action_spaces(agent)
-            resp = requests.post(agent_urls[agent], json.dumps(action_space))
-            actions[agent] = resp.json()
+            actions[agent] = get_action(agent, action_space)
         observations, rewards, terminations, truncations, infos = env.step(
             actions)
         env.render()
