@@ -1,0 +1,20 @@
+{
+  "folders": [
+	{
+		"name": "pettingzoo-docker",
+		"path": "."
+	}
+],
+  "settings": {
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "autopep8",
+    "python.autoComplete.extraPaths": [
+      "C:/Users/lknaa/AppData/Local/pypoetry/Cache/virtualenvs/pettingzoo-docker-2WVkbXa_-py3.10/Lib/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+      "C:/Users/lknaa/AppData/Local/pypoetry/Cache/virtualenvs/pettingzoo-docker-2WVkbXa_-py3.10/Lib/site-packages"
+    ]
+  }
+}
