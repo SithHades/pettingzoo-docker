@@ -11,10 +11,9 @@ The select_action method can be called by the environment via http requests.
 The expected arguments are an agent_id and the port for the agent to listen on.
 """
 
-import json
-from flask import Flask, request, jsonify
+import jsonpickle as json
+from flask import Flask, request
 import sys
-from gymnasium import spaces
 
 
 class Agent:
@@ -30,11 +29,16 @@ app = Flask(__name__)
 agent = Agent(sys.argv[1])
 
 
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+
 @app.route('/select_action', methods=['POST'])
 def select_action():
     action_space = json.loads(request.data)
-    action = agent.select_action(spaces.from_jsonable(action_space))
-    return jsonify(action)
+    action = agent.select_action(action_space)
+    return json.dumps(action)
 
 
 if __name__ == "__main__":
