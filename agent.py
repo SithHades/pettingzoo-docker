@@ -30,8 +30,8 @@ agent = Agent(sys.argv[1])
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def healt():
+    return 'App works!'
 
 
 @app.route('/select_action', methods=['POST'])
