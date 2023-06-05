@@ -1,13 +1,14 @@
-from agent import Agent
+from gymnasium import spaces
 from pettingzoo.butterfly import cooperative_pong_v5
 import requests
 import json
+import numpy as np
 
 env = cooperative_pong_v5.parallel_env(render_mode="human")
 
 agent_urls = {
-    "agent_0": "http://localhost:5000/select_action",
-    "agent_1": "http://localhost:5001/select_action",
+    "paddle_0": "http://localhost:5000/select_action",
+    "paddle_1": "http://localhost:5001/select_action",
 }
 
 
@@ -22,6 +23,11 @@ def get_action(agent, action_space):
             continue
 
 
+space = env.action_space("paddle_0")
+sample = space.sample()
+jsonable = space.to_jsonable(sample)
+
+
 for i in range(10):
     observations = env.reset()
     print(f"game: {i}")
@@ -29,8 +35,12 @@ for i in range(10):
     while env.agents:
         actions = {}
         for agent in env.agents:
-            action_space = env.action_spaces(agent)
-            actions[agent] = get_action(agent, action_space)
+            action_space = env.action_space(agent)
+            print(action_space.shape)
+            print(type(action_space))
+            sample = action_space.sample()
+            actions[agent] = get_action(
+                agent, action_space.to_jsonable(sample_n=sample))
         observations, rewards, terminations, truncations, infos = env.step(
             actions)
         env.render()

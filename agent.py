@@ -14,6 +14,7 @@ The expected arguments are an agent_id and the port for the agent to listen on.
 import json
 from flask import Flask, request, jsonify
 import sys
+from gymnasium import spaces
 
 
 class Agent:
@@ -32,7 +33,7 @@ agent = Agent(sys.argv[1])
 @app.route('/select_action', methods=['POST'])
 def select_action():
     action_space = json.loads(request.data)
-    action = agent.select_action(action_space)
+    action = agent.select_action(spaces.from_jsonable(action_space))
     return jsonify(action)
 
 
