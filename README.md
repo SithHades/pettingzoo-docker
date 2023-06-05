@@ -35,3 +35,7 @@ Then, you can start the environment by running (build, if still necessary):
 ```bash
 docker run -it --network myNetwork env
 ```
+
+## Further Information
+
+The render mode of the environment had to be set to `rgb_array`, because the docker container for the environment does not have a display by default. This means, that the environment can not be rendered in `human` mode.
