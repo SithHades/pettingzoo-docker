@@ -15,4 +15,6 @@ RUN pip install poetry \
 
 COPY agent.py .
 
+ARG agent_id
+ARG port
 ENTRYPOINT ["python", "agent.py"]

@@ -30,8 +30,15 @@ agent = Agent(sys.argv[1])
 
 
 @app.route('/')
-def healt():
-    return 'App works!'
+@app.route('/' + agent.agent_id)
+def health():
+    return 'App works! for ' + agent.agent_id
+
+
+@app.route('/health')
+@app.route('/' + agent.agent_id + '/health')
+def secondHealth():
+    return 'Second heartbeat for ' + agent.agent_id
 
 
 @app.route('/select_action', methods=['POST'])

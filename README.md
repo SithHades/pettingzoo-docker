@@ -10,7 +10,7 @@ The project is split into two parts, the agent and the environment. The agent is
 To start the agents, simply run the following command:
 
 ```bash
-docker build -t agent -f dockerfile.env .
+docker build -t agent -f dockerfile.agent .
 docker run -d --name agent_1 -p 5000:5000 agent agent_1 5000
 docker run -d --name agent_2 -p 5001:5000 agent agent_2 5001
 ```
