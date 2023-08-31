@@ -49,4 +49,4 @@ def select_action():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=sys.argv[2])
+    app.run(host='0.0.0.0', port=int(sys.argv[2]))
