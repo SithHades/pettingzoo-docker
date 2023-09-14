@@ -17,7 +17,8 @@ class Agent:
         print("agent " + agent_id + " is created!")
         self.agent_id = agent_id
 
-    def select_action(self, action_space):
+    @staticmethod
+    def select_action(action_space):
         return action_space.sample()
 
 
