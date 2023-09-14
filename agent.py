@@ -1,14 +1,10 @@
 """
-This is an agent class that can be used to create an agent for the pettingzoo environment.
-The agent is a simple random agent that selects a random action from the action space.
-The agent is created by passing an agent_id to the constructor.
-The agent_id is used to identify the agent in the environment.
-The agent has a select_action method that takes an action_space as input and returns an action.
-The action_space is a dictionary that contains the action space for each agent in the environment.
-The action is a dictionary that contains the action for each agent in the environment.
-The action is a random action from the action space.
-The select_action method can be called by the environment via http requests.
-The expected arguments are an agent_id and the port for the agent to listen on.
+This class defines a random agent for the 'pettingzoo' environment.
+An agent is instantiated with an 'agent_id' for identification.
+It has a 'select_action' method which picks a random action from the provided action_space dictionary.
+The action_space dictionary details the available actions for each agent.
+The chosen action is a dictionary format.
+This method can be invoked by the environment through HTTP requests, expecting 'agent_id' and a listening port as arguments.
 """
 
 import jsonpickle as json
